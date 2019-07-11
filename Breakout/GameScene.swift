@@ -124,6 +124,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func didBegin(_ contact: SKPhysicsContact) {
+        
+        //var numOfBricksRemainng = 10 /
+        
         if contact.bodyA.node?.name == "brick" ||
             contact.bodyB.node?.name == "brick" {
             print("You win!")
