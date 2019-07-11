@@ -14,12 +14,14 @@ class GameScene: SKScene {
     var ball = SKShapeNode()
     var paddle = SKSpriteNode()
     var brick = SKSpriteNode()
+    var loseZone = SKSpriteNode()
     
     override func didMove(to view: SKView) {
         createBackground()
         makeBall()
         makePaddle()
         makeBrick()
+        makeLoseZone()
     }
     
     func createBackground () {
@@ -41,7 +43,7 @@ class GameScene: SKScene {
         ball = SKShapeNode(circleOfRadius: 10)
         ball.position = CGPoint(x: frame.midX, y: frame.midY)
         ball.strokeColor = UIColor.black
-        ball.fillColor = UIColor.red
+        ball.fillColor = UIColor.blue
         ball.name = "ball"
         
         // physics shape matches ball image
@@ -80,4 +82,15 @@ class GameScene: SKScene {
         brick.physicsBody?.isDynamic = false
         addChild(brick)
     }
+    
+    func makeLoseZone() {
+        loseZone = SKSpriteNode(color: UIColor.red, size: CGSize(width: frame.width, height: 50))
+        loseZone.position = CGPoint(x: frame.midX, y: frame.minY + 25)
+        loseZone.name = "loseZone"
+        loseZone.physicsBody = SKPhysicsBody(rectangleOf: loseZone.size)
+        loseZone.physicsBody?.isDynamic = false
+        addChild(loseZone)
+    }
+    
+    
 }
